@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js && docker build -t hicto ."
+    "build": "node build/build.js && docker build -t hicto .",
+    "deploy": "docker save hicto | (eval $(docker-machine env vultr) && docker load)"
   },
   "dependencies": {
     "prerender-spa-plugin": "^3.4.0",

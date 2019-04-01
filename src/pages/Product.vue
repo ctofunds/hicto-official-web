@@ -1,22 +1,8 @@
 <template>
   <div>
-    <section class="top">
-      <div class="limited-width" style="position: relative; height:100%">
-        <header class="flex-space-between">
-          <img class="logo" src="@/assets/logo-dark.jpg">
-          <div class="nav flex-right-align">
-            <div class="item">关于 HiCTO</div>
-            <div class="item">团队</div>
-            <div class="item">案例</div>
-            <div class="item">合作</div>
-            <div class="item">联系我们</div>
-            <div class="item active">服务</div>
-          </div>
-        </header>
-      </div>
-    </section>
+    <header-view/>
     <section class="body">
-      <div class="limited-width flex-space-between" style="align-items:flex-start">
+      <div class="limited-width flex-space-between" style="align-items:flex-start; flex-wrap:wrap">
         <section class="main">
           <div class="bread-crumbs">
             <router-link :to="{ name: 'serviceHome'}">
@@ -41,20 +27,15 @@
             </div>
           </div>
           <div class="product-desc">
-            <p>技术合伙人已经是创业的标准配置，但是优秀的技术合伙人凤毛菱角，我们应该从那些渠道去寻找技术合伙人？</p>
-            <p>又应该从哪些方面去判断一个技术合伙人是否具备能力和素质，可以陪伴企业成长呢？</p>
-            <p>服务流程为：</p>
-            <p>1. 服务以1小时为单位，填写联系方式，并支付费用，支付完成后，HiCTO会尽快联系您，您也可以直接联系HiCTO，我们会帮您安排时间，确定双方都方便的时间。</p>
-            <p>2. 时间确认后，双方线上沟通或者线下见面。</p>
-            <p>3. 最后双方确认服务达成。</p>
+            <p v-for="text in service.desc">{{text}}</p>
           </div>
         </section>
         <section class="side">
           <div>顾问</div>
-          <div class="seperator-line"></div>
-          <consultant-card class="consultant" v-on:chosen="showForm()"/>
-          <div class="seperator-line"></div>
-          <consultant-card class="consultant" v-on:chosen="showForm()"/>
+          <div v-for="consultant in product.consultants">
+            <div class="seperator-line"></div>
+            <consultant-card :consultant="consultant" class="consultant" v-on:chosen="showForm()"/>
+          </div>
         </section>
       </div>
     </section>
@@ -63,12 +44,13 @@
 </template>
 
 <script>
+import HeaderView from "@/components/HeaderView";
 import FooterView from "@/components/FooterView";
 import ConsultantCard from "@/components/ConsultantCard";
 import data from "@/libs/data";
 
 export default {
-  components: { FooterView, ConsultantCard },
+  components: { HeaderView, FooterView, ConsultantCard },
   data() {
     return {
       service: data.getService(this.$route.params.serviceKey),
@@ -80,7 +62,7 @@ export default {
   },
   methods: {
     showForm() {
-      ysf('open')
+      ysf("open");
     }
   }
 };
@@ -88,29 +70,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.top {
-  height: 150px;
-  background-color: #f5f7fa;
-}
-.top .title {
-  color: #fff;
-  font-size: 30px;
-}
-
-header {
-  height: 80px;
-}
-header .nav .item {
-  color: #85909e;
-  font-size: 15px;
-  font-weight: 600;
-  margin-left: 50px;
-}
-header .nav .active {
-  color: #162944;
-}
-
 .body {
+  padding-top: 50px;
   background-color: #f5f7fa;
   padding-bottom: 100px;
 }
@@ -121,7 +82,8 @@ header .nav .active {
   width: 30%;
 }
 
-.bread-crumbs a, span{
+.bread-crumbs a,
+span {
   font-size: 15px;
   font-weight: 600;
   color: #85909e;
@@ -159,14 +121,17 @@ header .nav .active {
   font-weight: 600;
   margin-bottom: 5px;
 }
-
+.product-img .cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .product-img .cover .logo {
   width: 200px;
   height: auto;
-  margin-top: 18%;
-  margin-bottom: 5%;
 }
 .product-img .cover .title {
+  margin-top: 5%;
   font-size: 37.5px;
   font-weight: 600;
   color: #fff;
@@ -186,5 +151,16 @@ header .nav .active {
 
 .consultant {
   margin: 40px 0px;
+}
+
+/* mobile */
+@media screen and (max-width: 700px) {
+  .main {
+    width: 100%;
+  }
+  .side {
+    padding-top: 50px;
+    width: 100%;
+  }
 }
 </style>

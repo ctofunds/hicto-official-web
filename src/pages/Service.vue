@@ -1,19 +1,9 @@
 <template>
   <div>
-    <section ctio class="top">
+    <header-view/>
+    <section ctio class="top" style="padding-top:10px;">
       <div class="limited-width" style="position: relative; height:100%">
-        <header class="flex-space-between">
-          <img class="logo" src="@/assets/logo.png">
-          <div class="nav flex-right-align">
-            <div class="item">关于 HiCTO</div>
-            <div class="item">团队</div>
-            <div class="item">案例</div>
-            <div class="item">合作</div>
-            <div class="item">联系我们</div>
-            <div class="item active">服务</div>
-          </div>
-        </header>
-        <div class="title" style="margin:40px 0px 10px 0px;">{{service.name}}</div>
+        <div class="title">{{service.name}}</div>
         <div class="title">百亿美金上市公司CTO及BAT技术专家帮您把关</div>
         <div class="tabs">
           <router-link :to="{ name: 'service', params:{key: 'interview'}}">
@@ -48,11 +38,12 @@
 
 <script>
 import ProductCard from "@/components/ProductCard";
+import HeaderView from "@/components/HeaderView";
 import FooterView from "@/components/FooterView";
 import data from "@/libs/data";
 
 export default {
-  components: { ProductCard, FooterView },
+  components: { ProductCard, FooterView, HeaderView },
   data() {
     return {
       service: {}
@@ -66,9 +57,7 @@ export default {
   },
   methods: {
     refresh() {
-      this.service = data.getService(
-        this.$route.params.key || "interview"
-      );
+      this.service = data.getService(this.$route.params.key || "interview");
     }
   }
 };
@@ -77,32 +66,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .top {
-  height: 333px;
   background-color: #083272;
 }
 .top .title {
   color: #fff;
   font-size: 30px;
+  margin: 5px 0px;
 }
 
-header {
-  height: 80px;
-}
-header .nav .item {
-  color: #879ec0;
-  font-size: 15px;
-  font-weight: 600;
-  margin-left: 50px;
-}
-header .nav .active {
-  color: #fff;
-}
 .tabs {
+  margin-top: 20px;
   display: flex;
   justify-content: left-align;
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
   line-height: 90px;
   font-weight: 600;
   color: #ffffff;
@@ -135,7 +110,12 @@ header .nav .active {
   width: 30%;
   margin-bottom: 5%;
 }
-.product-list .card:last-child {
-  margin-right: 0px;
+
+/* mobile */
+@media screen and (max-width: 700px) {
+  .product-list .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 }
 </style>

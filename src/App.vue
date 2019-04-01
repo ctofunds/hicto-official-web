@@ -33,9 +33,9 @@ a {
 .limited-width {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1000px;
+  padding: 0px 20px;
+  max-width: 1100px;
 }
-
 
 .logo {
   width: 102px;

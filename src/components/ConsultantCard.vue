@@ -1,16 +1,15 @@
 <template>
   <div class="consultant">
     <div class="flex-left-align">
-      <img class="avatar" src="@/assets/avatars/pxl@2x.jpg">
+      <img class="avatar" :src="consultant.avatar">
       <div>
-        <div class="name">潘晓良</div>
-        <div class="position">技术合伙人</div>
+        <div class="name">{{consultant.name}}</div>
+        <div class="position">{{consultant.position}}</div>
       </div>
     </div>
-    <div class="job-title">前百姓网CTO&联合创始人</div>
+    <div class="job-title">{{consultant.jobTitle}}</div>
     <div class="desc">
-      从零开始打造百姓网 “小而美”的技术团队
-      在产品运营、公司文化、人事制度等方面经验丰富
+      {{consultant.introduction}}
     </div>
     <div v-on:click="pressed()" class="contact-button">咨询 ￥2900</div>
   </div>
@@ -18,6 +17,9 @@
 
 <script>
 export default {
+  props: {
+    consultant: Object
+  },
   data() {
     return {};
   },

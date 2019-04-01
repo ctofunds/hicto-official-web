@@ -5,11 +5,11 @@
         <img class="bg" :src="product.bg">
         <div class="black-mask"></div>
         <div class="cover">
-          <img class="logo centered" src="@/assets/logo.png">
-          <div class="title centered-text">{{serviceName}}</div>
+          <!-- <img class="logo centered" src="@/assets/logo.png"> -->
+          <div class="title centered-text">{{product.title}}</div>
         </div>
       </div>
-      <img class="avatar" src="@/assets/avatars/pxl@2x.jpg">
+      <img class="avatar" :src="product.consultants[0].avatar">
     </div>
     <div class="container">
       <div class="small-title">{{serviceName}}</div>
@@ -63,6 +63,12 @@ export default {
   margin-bottom: 5px;
 }
 
+.product .cover {
+  padding: 0px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .product .cover .logo {
   width: 154px;
   height: auto;
@@ -70,7 +76,7 @@ export default {
   margin-bottom: 10%;
 }
 .product .cover .title {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 600;
   color: #fff;
 }
