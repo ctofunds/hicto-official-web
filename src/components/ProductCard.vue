@@ -48,12 +48,12 @@ export default {
 }
 
 .product .avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
   position: absolute;
-  right:30px;
+  right:25px;
   bottom: -20px;
 }
 .product .small-title {
@@ -89,7 +89,9 @@ export default {
 }
 
 .product .container .title {
-  height: 65px;
+  font-size : 24px;
+  font-weight: 300;
+  height: 66px;
 }
 .product .container .price {
   font-size: 20px;

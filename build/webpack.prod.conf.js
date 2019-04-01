@@ -10,8 +10,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
 
 const env = require('../config/prod.env')
+var services = {
+  interview: ['A01','A02','A03','A04','A05','A06','A07'],
+  consulting: ['B01','B02','B03','B04','B05','B06','B07','B08','B09','B10'],
+  deep_service: ['C01','C02','C03','C04'],
+}
+var urls = ['/']
+for (var key in services) {
+  urls.push(`/service/${key}`)
+  urls = urls.concat(services[key].map(function(code){
+    return `/service/${key}/product/${code}`
+  }))
+}
+console.log(urls);
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -28,6 +42,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
+
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
@@ -115,7 +130,13 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    new PrerenderSPAPlugin({
+      // Required - The path to the webpack-outputted app to prerender.
+      staticDir: path.resolve(__dirname, '..', 'dist'),
+      // Required - Routes to render.
+      routes: urls
+    }),
   ]
 })
 

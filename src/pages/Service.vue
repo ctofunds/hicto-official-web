@@ -78,12 +78,12 @@ export default {
   margin-top: 20px;
   display: flex;
   justify-content: left-align;
-  line-height: 90px;
   font-weight: 600;
   color: #ffffff;
 }
 
 .tabs .tab {
+  padding: 30px 0px;
   opacity: 0.4;
   margin-right: 30px;
 }

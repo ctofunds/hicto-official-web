@@ -8,7 +8,11 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   scrollBehavior (to, from, savedPosition) {
-    return { x: 0, y: 0 }
+    if (to.name != from.name) {
+      return {x: 0, y: 0}
+    } else {
+      return savedPosition
+    }
   },
   routes: [
     {

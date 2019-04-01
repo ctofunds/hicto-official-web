@@ -21,13 +21,12 @@
               <img :src="product.bg">
               <div class="black-mask"></div>
               <div class="cover">
-                <img class="logo centered" src="@/assets/logo.png">
-                <div class="title centered-text">面试服务</div>
+                <div class="title centered-text">{{product.title}}</div>
               </div>
             </div>
           </div>
           <div class="product-desc">
-            <p v-for="text in service.desc">{{text}}</p>
+            <p v-for="text in service.introduction">{{text}}</p>
           </div>
         </section>
         <section class="side">
@@ -71,7 +70,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .body {
-  padding-top: 50px;
+  padding-top: 35px;
   background-color: #f5f7fa;
   padding-bottom: 100px;
 }
@@ -91,6 +90,7 @@ span {
 .bread-crumbs span {
   display: inline-block;
   margin-right: 20px;
+  margin-bottom: 5px;
 }
 .bread-crumbs .path {
   cursor: pointer;
@@ -125,14 +125,14 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 20px;
 }
 .product-img .cover .logo {
   width: 200px;
   height: auto;
 }
 .product-img .cover .title {
-  margin-top: 5%;
-  font-size: 37.5px;
+  font-size: 40px;
   font-weight: 600;
   color: #fff;
 }
@@ -155,6 +155,10 @@ span {
 
 /* mobile */
 @media screen and (max-width: 700px) {
+  .bread-crumbs span {
+    display: inline-block;
+    margin-right: 5px;
+  }
   .main {
     width: 100%;
   }
