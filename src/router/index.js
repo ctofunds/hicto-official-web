@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Index from '@/pages/Index'
 import Service from '@/pages/Service'
+import OnlineService from '@/pages/OnlineService'
 import Product from '@/pages/Product'
 
 Vue.use(Router)
@@ -17,8 +19,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'serviceHome',
-      component: Service
+      name: 'index',
+      component: Index
     },
     {
       path: '/service/:key',
@@ -26,7 +28,17 @@ export default new Router({
       component: Service
     },
     {
-      path: '/service/:serviceKey/product/:productCode',
+      path: '/online-service',
+      name: 'onlineServiceHome',
+      component: OnlineService
+    },
+    {
+      path: '/online-service/:key',
+      name: 'onlineService',
+      component: OnlineService
+    },
+    {
+      path: '/online-service/:serviceKey/product/:productCode',
       name: 'product',
       component: Product
     }

@@ -1,15 +1,15 @@
 <template>
   <div>
-    <header-view/>
+    <header-view style="background-color: #083272;"/>
     <section class="body">
       <div class="limited-width flex-space-between" style="align-items:flex-start; flex-wrap:wrap">
         <section class="main">
           <div class="bread-crumbs">
-            <router-link :to="{ name: 'serviceHome'}">
+            <router-link :to="{ name: 'onlineServiceHome'}">
               <span class="path">服务</span>
             </router-link>
             <span class="arrow">></span>
-            <router-link :to="{ name: 'service', params: {key: service.key}}">
+            <router-link :to="{ name: 'onlineService', params: {key: service.key}}">
               <span class="path">{{service.name}}</span>
             </router-link>
             <span class="arrow">></span>
@@ -25,8 +25,11 @@
               </div>
             </div>
           </div>
+          <div v-show="product.introduction" class="product-desc" style="margin-bottom:20px;">
+            <p v-for="text in product.introduction" v-html="text"></p>
+          </div>
           <div class="product-desc">
-            <p v-for="text in service.introduction">{{text}}</p>
+            <p v-for="text in service.introduction" v-html="text"></p>
           </div>
         </section>
         <section class="side">
@@ -89,7 +92,7 @@ span {
 }
 .bread-crumbs span {
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 15px;
   margin-bottom: 5px;
 }
 .bread-crumbs .path {
@@ -104,7 +107,7 @@ span {
 
 .product-title {
   margin: 20px 0px;
-  font-size: 45px;
+  font-size: 42px;
   font-weight: 300;
   color: #162944;
 }
@@ -139,8 +142,8 @@ span {
 
 .product-desc {
   margin-top: 40px;
-  font-size: 15px;
-  line-height: 2.2;
+  font-size: 16px;
+  line-height: 2;
   color: #162944;
 }
 

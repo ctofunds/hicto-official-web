@@ -11,7 +11,13 @@
     <div class="desc">
       {{consultant.introduction}}
     </div>
-    <div v-on:click="pressed()" class="contact-button">咨询 ￥2900</div>
+    <div class="desc" v-if="consultant.github">
+      Github: <a style="color:#162944;" target="_blank" v-bind:href="consultant.github">{{consultant.github}}</a> 
+    </div>
+    <div v-on:click="pressed()" class="contact-button">
+      <span>咨询 ￥{{consultant.price}}</span>
+      <span style="text-decoration:line-through; font-size:13px; margin-left:3px;">(￥{{consultant.originalPrice}})</span>
+    </div>
   </div>
 </template>
 
@@ -41,7 +47,7 @@ export default {
   height: 78px;
   border-radius: 39px;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
-  margin-right: 10px;
+  margin-right: 13px;
 }
 .name {
   font-size: 35px;

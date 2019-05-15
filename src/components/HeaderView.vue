@@ -3,7 +3,7 @@
     <div class="limited-width" style="position: relative; height:100%">
       <div class="flex-space-between">
         <div>
-          <router-link :to="{ name: 'serviceHome'}">
+          <router-link :to="{ name: 'index'}">
             <img class="logo" src="@/assets/logo.png">
           </router-link>
         </div>
@@ -23,7 +23,7 @@
 header {
   height: 80px;
   line-height: 80px;
-  background-color: #083272;
+
 }
 header .logo {
   vertical-align: middle;

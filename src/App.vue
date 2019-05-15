@@ -23,11 +23,19 @@ body, h1, h2, h3, h4 {
   margin: 0px;
 }
 
+p {
+  margin: 10px 0px;
+}
+
 a:link {
   text-decoration: none;
 }
 a {
   color: #fff;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 .limited-width {
@@ -41,10 +49,10 @@ a {
   width: 102px;
   height: 24px;
 }
-
-a:link {
-  text-decoration: none;
+img {
+  width: 100%;
 }
+
 
 
 .full-width {
@@ -64,7 +72,7 @@ a:link {
 .seperator-line {
   /* margin: 0px 20px; */
 	height: 1px;
-	background-color: #f5f7fa;
+	background-color: #f1f1f1;
 }
 
 .container {
@@ -89,7 +97,10 @@ a:link {
   align-items: center;
 }
 
-
+.big-title {
+  font-size: 40px;
+  font-weight: 600;
+}
 .title {
   font-size: 24px;
   color: #162944;

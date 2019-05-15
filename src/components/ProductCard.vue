@@ -15,8 +15,9 @@
       <div class="small-title">{{serviceName}}</div>
       <div class="title">{{product.title}}</div>
       <div class="seperator-line"></div>
-      <div class="price">￥3200 起</div>
-    </div>
+      <div class="price" v-if="product.lowestPrice != 0">￥{{product.lowestPrice}} 起</div>
+      <div class="price" v-if="product.lowestPrice == 0">咨询价格</div>
+   </div>
   </div>
 </template>
 
