@@ -7,9 +7,9 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js && docker build -t hicto .",
-    "deploy": "docker save hicto | (eval $(docker-machine env vultr) && docker load)"
-  },
+    "build": "node build/build.js",
+    "deploy": "npm run build && time=`date +%Y_%m%d_%H%M` && docker build -t registry.cn-shanghai.aliyuncs.com/hicto/official-web:$time ./ && docker push registry.cn-shanghai.aliyuncs.com/hicto/official-web:$time"
+    },
   "dependencies": {
     "prerender-spa-plugin": "^3.4.0",
     "vue": "^2.5.2",

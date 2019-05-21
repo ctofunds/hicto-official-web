@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-view style="background-color: #083272;"/>
+    <header-view style="background-color:  #04304C"/>
     <section class="body">
       <div class="limited-width flex-space-between" style="align-items:flex-start; flex-wrap:wrap">
         <section class="main">
@@ -73,7 +73,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .body {
-  padding-top: 35px;
+  padding-top: 120px;
   background-color: #f5f7fa;
   padding-bottom: 100px;
 }

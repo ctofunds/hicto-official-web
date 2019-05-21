@@ -1,41 +1,31 @@
 <template>
   <div class="main">
-    <header-view style=""  class="header"/>
+    <header-view />
       <div class="top" style="padding:150px 0px 100px 0px;">
-        <div class="big-title" style="">HiCTO Accelarator</div>
-        <div class="" style="font-size: 32px;font-weight: 100; margin-top:10px;">加速赋能服务</div>
-        <div class="centered" style="font-size: 18px; font-weight:300; line-height:1.5; margin-top:50px; max-width:560px; padding:0px 20px;">HiCTO Accelerator (加速) 是属于HiCTO旗下主要面向成长期企业的技术加速赋能服务部门。我们希望通过团队在战略规划、技术研发、团队搭建的积累以及互联网行业人脉网络，全程深度参与运营及业务落地，加速企业成长。</div>
+        <div class="big-title" style="">{{service.name}}</div>
+        <div class="" style="font-size: 32px;font-weight: 100; margin-top:10px;">{{service.description}}</div>
+        <div class="centered" style="font-size: 18px; font-weight:300; line-height:1.5; margin-top:50px; max-width:570px; padding:0px 20px;">{{service.introduction}}</div>
       </div>
       <div class="limited-width">
-        <section class="problems">
-          <div class="centered-text" style="font-size: 40px;font-weight: 100; margin-bottom:60px;">您是否会遇到这三类技术痛点?</div>
+        <section class="problems" v-if="service.problems">
+          <div class="centered-text" style="font-size: 40px;font-weight: 100; margin-bottom:60px;">{{service.problems.title}}</div>
+          <div class="flex-space-between" style="align-items:flex-start;">
+            <div class="problem" v-for="problem in service.problems.details">
+              <img class="image" :src="problem.icon">
+              <div class="title centered-text" style="font-size:20px; margin-top:30px;">{{problem.title}}</div>
+              <div class="desc" >
+                <p v-for="desc in problem.descriptions">
+                  {{desc}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="value" v-if="service.logic">
+          <div class="big-title centered-text" style="margin-bottom:30px;">技术VC投资赋能逻辑</div>
           <div class="flex-space-between">
-            <div class="problem">
-              <img class="image" src="@/assets/service/problems/outsourcing.jpg">
-              <div class="title centered-text">使用技术外包痛点多</div>
-              <div class="desc">
-                <p>1.系统投入使用后不稳定，维护费用高；</p>
-                <p>2.选了供应商后，发现性价比不理想；</p>
-                <p>3.想要接管外包代码，却被供应商”绑架”。</p>
-              </div>
-            </div>
-            <div class="problem">
-              <img class="image" src="@/assets/service/problems/outsourcing.jpg">
-              <div class="title centered-text">使用技术外包痛点多</div>
-              <div class="desc">
-                <p>1.系统投入使用后不稳定，维护费用高；</p>
-                <p>2.选了供应商后，发现性价比不理想；</p>
-                <p>3.想要接管外包代码，却被供应商”绑架”。</p>
-              </div>
-            </div>
-            <div class="problem">
-              <img class="image" src="@/assets/service/problems/outsourcing.jpg">
-              <div class="title centered-text">使用技术外包痛点多</div>
-              <div class="desc">
-                <p>1.系统投入使用后不稳定，维护费用高；</p>
-                <p>2.选了供应商后，发现性价比不理想；</p>
-                <p>3.想要接管外包代码，却被供应商”绑架”。</p>
-              </div>
+            <div class="circle-text" style="background-color:#0975cf" v-for="value in service.logic">
+              <div v-for="line in value">{{line}}</div>
             </div>
           </div>
         </section>
@@ -43,78 +33,81 @@
         <section class="value">
           <div class="big-title centered-text" style="margin-bottom:30px;">技术赋能的核心价值</div>
           <div class="flex-space-between">
-            <div class="circle-text">让CEO从技术烦恼中解脱出来更专注业务发展</div>
-            <div class="circle-text">让CEO从技术烦恼中解脱出来更专注业务发展</div>
-            <div class="circle-text">让CEO从技术烦恼中解脱出来更专注业务发展</div>
-            <div class="circle-text">让CEO从技术烦恼中解脱出来更专注业务发展</div>
+            <div class="circle-text" v-for="value in service.values">
+              <div v-for="line in value">{{line}}</div>
+            </div>
           </div>
         </section>
         <div class="seperator-line"></div>
         <section class="value">
           <div class="big-title centered-text" style="margin-bottom:30px;">核心赋能服务</div>
           <div class="flex-space-between">
-            <div class="circle-text" style="background-color:#0975cf">让CEO从技术烦恼中解脱出来更专注业务发展</div>
-            <div class="circle-text" style="background-color:#0975cf">让CEO从技术烦恼中解脱出来更专注业务发展</div>
-            <div class="circle-text" style="background-color:#0975cf">让CEO从技术烦恼中解脱出来更专注业务发展</div>
-            <div class="circle-text" style="background-color:#0975cf">让CEO从技术烦恼中解脱出来更专注业务发展</div>
+            <div class="circle-text" style="background-color:#0975cf" v-for="content in service.contents">
+              <div v-for="line in content">{{line}}</div>
+            </div>
           </div>
         </section>
         <div class="seperator-line"></div>
         <section class="cooperation">
           <img class="image centered" style="width:300px;" src="@/assets/service/cooperation.jpg">
           <div class="big-title centered-text" style="margin:30px;">我们的合作形式</div>
-          <div class="flex-space-between" style="margin-top:50px;">
-            <div class="way">
-              <div class="title centered-text" style="font-size: 24px;font-weight: 600; margin-bottom:16px;">技术入股</div>
+          <div class="flex-space-between" style="margin-top:50px; justify-content:space-around;">
+            <div class="way centered-text">
+              <div class="title" style="font-size: 24px;font-weight: 600; margin-bottom:12px;">技术入股</div>
               <div class="text">
                 <div>HiCTO提供技术赋能服务</div>
                 <div>创业公司支付合同对价股权</div>
               </div>
             </div>
-            <div class="way" style="">
-              <div class="title centered-text" style="font-size: 24px;font-weight: 600; margin-bottom:16px;">技术入股</div>
+            <div class="way centered-text" style="">
+              <div class="title" style="font-size: 24px;font-weight: 600; margin-bottom:12px;">技术入股+现金</div>
               <div class="text">
                 <div>HiCTO提供技术赋能服务</div>
-                <div>创业公司支付合同对价股权</div>
+                <div>创业公司支付部分现金+股权</div>
               </div>
             </div>
-            <div class="way" style="">
-              <div class="title centered-text" style="font-size: 24px;font-weight: 600; margin-bottom:16px;">技术入股</div>
+            <div v-if="service.key != 'venture'" class="way centered-text" style="">
+              <div class="title " style="font-size: 24px;font-weight: 600; margin-bottom:12px;">现金</div>
               <div class="text">
                 <div>HiCTO提供技术赋能服务</div>
-                <div>创业公司支付合同对价股权</div>
+                <div>创业公司支付合同全部现金</div>
               </div>
             </div>
           </div>
         </section>
         <div class="seperator-line"></div>
-        <section class="flow centered-text">
+        <section class="value" v-if="service.targets">
+          <div class="big-title centered-text" style="margin-bottom:30px;">我们在寻找的项目类型</div>
+          <div class="flex-space-between">
+            <div class="circle-text" style="" v-for="target in service.targets">
+              <div v-for="line in target">{{line}}</div>
+            </div>
+          </div>
+        </section>
+        <section class="flow centered-text" v-if="service.flow">
           <div class="big-title" style="margin:30px;">我们的合作流程</div>
           <div class="text">
-            <div class="step">项目方提交技术赋能意向</div>
-            <div class="step">初步洽谈业务赋能需求</div>
-            <div class="step">项目尽调及出具初步服务方案</div>
-            <div class="step">双方进一步沟通确认合作细节</div>
-            <div class="step">签订服务协议，启动赋能</div>
+            <div class="step" v-for="step in service.flow">
+              {{step}}
+            </div>
           </div>
-          <div class="contact-button centered" style="margin-top:60px; margin-bottom:100px;">联系我们</div>
         </section>
+        <a href="mailto:berner.lin@ctofunds.com" class="contact-button centered" style="margin-top:0px; margin-bottom:100px;">联系我们</a>
       </div>
     <footer-view/>
   </div>
 </template>
 
 <script>
-import ProductCard from "@/components/ProductCard";
 import HeaderView from "@/components/HeaderView";
 import FooterView from "@/components/FooterView";
-import data from "@/libs/data";
+import serviceData from "@/libs/serviceData";
 
 export default {
-  components: { ProductCard, FooterView, HeaderView },
+  components: { FooterView, HeaderView },
   data() {
     return {
-      service: {}
+      service: serviceData[this.$route.params.key || "accelerator"]
     };
   },
   created() {
@@ -125,7 +118,7 @@ export default {
   },
   methods: {
     refresh() {
-      // this.service = data.getService(this.$route.params.key || "consulting");
+      this.service = serviceData[this.$route.params.key || "accelerator"]
     }
   }
 };
@@ -134,7 +127,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .top {
-    margin-top: -80px;
     padding: 180px 20px;
     box-sizing: border-box;
     background: url(~@/assets/bg.jpg) no-repeat center;
@@ -143,25 +135,25 @@ export default {
     background-color: #246;
     position: relative;
     text-align: center;
+    min-height: 520px;
 }
 
-.header {
-  z-index: 1;
-  position: relative;
-  width:100%;
-  background-color: transparent;
-}
 section {
   padding: 70px 0px;
 }
 
 .problem {
-  width: 27%;
+  width: 29%;
 }
 
 
 .problem .image {
-  width: 100%;
+  /* width: 90%; */
+  width: auto;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .problem .title {
@@ -183,12 +175,14 @@ section {
 .circle-text {
   background-color: #49a0e8;
   color: #fff;
-  width: 220px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
   text-align: center;
-  padding: 40px;
-  border-radius: 110px;
+  padding: 20px;
+  line-height:1.5;
+  border-radius: 50%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center
 }

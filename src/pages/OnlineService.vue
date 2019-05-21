@@ -1,17 +1,17 @@
 <template>
   <div>
-    <header-view style="background-color: #083272;"/>
-    <section ctio class="top" style="padding-top:10px;">
+    <header-view />
+    <section class="top" style="">
       <div class="limited-width" style="position: relative; height:100%">
-        <div class="title">{{service.name}}</div>
+        <div class="title">HiCTO {{service.name}}</div>
         <!-- <div class="title">百亿美金上市公司CTO及BAT技术专家帮您把关</div> -->
         <div class="tabs">
           <router-link :to="{ name: 'onlineService', params:{key: 'consulting'}}">
             <div class="tab" v-bind:class="{ active: service.key == 'consulting'}">技术轻咨询</div>
           </router-link>
-          <router-link :to="{ name: 'onlineService', params:{key: 'deep_service'}}">
+          <!-- <router-link :to="{ name: 'onlineService', params:{key: 'deep_service'}}">
             <div class="tab" v-bind:class="{ active: service.key == 'deep_service'}">技术深度服务</div>
-          </router-link>
+          </router-link> -->
           <router-link :to="{ name: 'onlineService', params:{key: 'interview'}}">
             <div class="tab" v-bind:class="{ active: service.key == 'interview'}">面试服务</div>
           </router-link>
@@ -65,8 +65,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.header {
+  z-index: 1;
+  position: relative;
+  width:100%;
+  background-color: transparent;
+}
 .top {
-  background-color: #083272;
+    padding-top:130px;
+    padding-bottom: 0px;
+    box-sizing: border-box;
+    background: url(~@/assets/bg.jpg) no-repeat center;
+    background-size: cover;
+    color: #FFF;
+    background-color: #246;
+    position: relative;
 }
 .top .title {
   color: #fff;
@@ -75,7 +88,7 @@ export default {
 }
 
 .tabs {
-  margin-top: 20px;
+  margin-top: 0px;
   display: flex;
   justify-content: left-align;
   font-weight: 600;

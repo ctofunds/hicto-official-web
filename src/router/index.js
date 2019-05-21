@@ -9,11 +9,13 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  scrollBehavior (to, from, savedPosition) {
-    if (to.name != from.name) {
-      return {x: 0, y: 0}
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return { selector: to.hash }
+    } else if (savedPosition) {
+      return savedPosition;
     } else {
-      return savedPosition
+      return { x: 0, y: 0 }
     }
   },
   routes: [

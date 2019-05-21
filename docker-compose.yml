@@ -1,0 +1,9 @@
+version: "3.2"
+services:
+  official-web:
+    image: registry.cn-shanghai.aliyuncs.com/hicto/official-web:2019_0516_1317
+    environment:
+      TZ: "Asia/Shanghai"
+    ports:
+      - "80:80"
+

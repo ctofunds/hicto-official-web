@@ -1,26 +1,26 @@
 <template>
   <div>
-    <header-view style="background-color:transparent" class="header"/>
+    <header-view/>
       <div class="top">
         <h2 class="big-title" style="font-size:60px;">创业者可信赖的共享技术合伙人</h2>
-        <p class="" style="font-size: 32px;font-weight: 100; margin-top:20px;">实力派技术vc，未来独角兽背后的技术赋能机构</p>     
+        <p class="" style="font-size: 32px;font-weight: 100; margin-top:20px;">实力派技术VC，未来独角兽背后的技术赋能机构</p>     
         <div class="flex-space-between limited-width" style="margin-top:60px; align-items:flex-start;">
           <div class="info">
-            <div style="display:flex:align-items:base-line; margin-bottom:10px;">
+            <div style="align-items:flex-start; margin-bottom:10px;">
               <span class="big-title">15</span>
               <span class="desc">家</span>
             </div>
             <div class="desc">DCM、君联、高榕等15家知名机构的指定技术尽职调查供应商</div>
           </div>
           <div class="info">
-            <div style="display:flex:align-items:base-line; margin-bottom:10px;">
+            <div style="align-items:flex-start; margin-bottom:10px;">
               <span class="big-title">36</span>
-              <span class="desc">家</span>
+              <span class="desc">个</span>
             </div>
-            <div class="desc">为Hitales、兔博士、比心、名医主刀等35个创业企业提供深度技术赋能服务，超过50%项目是由凯辉、高榕、经纬、软银等知名机构推荐</div>
+            <div class="desc">HiCTO深度赋能服务和投资了36家创业企业，包括Hitales、兔博士、比心、辅料易、鱼大大等项目，超过50%项目是由凯辉、高榕、经纬、软银等知名机构推荐</div>
           </div>
           <div class="info">
-            <div style="display:flex:align-items:base-line; margin-bottom:10px;">
+            <div style="align-items:flex-start; margin-bottom:10px;">
               <span class="big-title">65</span>
               <span class="desc">%</span>
             </div>
@@ -45,8 +45,8 @@
             </div>
           </div>
         </section>
-        <div class="seperator-line"></div>
-        <section>
+        <div id="team" class="seperator-line"></div>
+        <section >
           <div class="big-title centered-text" style="margin-bottom:30px;">核心团队</div>
           <div class="flex-space-between" style="align-items:flex-start; flex-wrap: wrap;">
             <div class="member" v-for="member in data.members">
@@ -65,8 +65,8 @@
             此外，HiCTO 还有一批全职技术专家，他们曾在腾讯、阿里、百度、滴滴、EMC、SAP 等知名公司担任研发总监或高端架构师。这些技术专家擅长于前端、后端、算法、数据、 客户端、区块链等各个技术领域，他们主要负责赋能项目的落地实施过程把关。
           </div>
         </section>
-        <div class="seperator-line"></div>
-        <section>
+        <div id="projects"class="seperator-line"></div>
+        <section >
           <div class="big-title centered-text" style="margin-bottom:30px;">赋能项目</div>
           <div class="centered" style="font-size: 20px; font-weight:300; max-width:650px; line-height:1.5;">
             HiCTO作为创业者的共享技术合伙人，提供全方位可落地的技术支持。目前已成功赋能三十余个互联网创业项目，包括兔博士、Hitales、辅料易、拼多多、名堂、比心、名医主刀、鱼大大、Nonda、Carblock等优秀企业，其中65%的项目赋能期间成功获得下一轮融资。
@@ -78,8 +78,8 @@
             </div>
           </div>
         </section>
-        <div class="seperator-line"></div>
-        <section>
+        <div id="funds" class="seperator-line"></div>
+        <section >
           <div class="big-title centered-text" style="margin-bottom:30px;">合作机构</div>
           <div class="flex-space-between" style="flex-wrap: wrap;">
             <div class="vc" v-for="vc in data.vcs">
@@ -116,20 +116,13 @@ export default {
 <style scoped>
 .top {
     margin-top: -80px;
-    padding: 180px 20px 120px 20px;
+    padding: 260px 20px 120px 20px;
     box-sizing: border-box;
     background: url(~@/assets/bg.jpg) no-repeat center;
     background-size: cover;
-    color: #FFF;
-    background-color: #246;
+    color: #ffffff;
     position: relative;
     text-align: center;
-}
-
-.header {
-  z-index: 1;
-  position: relative;
-  width:100%;
 }
 
 .top .info {
@@ -165,7 +158,9 @@ section {
   height: 210px;
   width: 210px;
 }
-
+.seperator-line {
+  margin-bottom:30px;
+}
 .member .name {
   font-size: 28px;
   font-weight: bold;
