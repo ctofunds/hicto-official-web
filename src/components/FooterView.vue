@@ -4,9 +4,10 @@
       <div class="left flex-left-align" style="align-items:flex-start;">
         <img class="logo" src="@/assets/logo.png">
         <div class="info">
-          <div class="text">上海市长宁区长宁路 1027 号兆丰广场 35 楼</div>
+          <div class="text">上海市徐汇区华山路1901号国贸汇A座9层</div>
           <div class="text">上海上马石网络科技有限公司</div>
-          <div class="text" style="margin-top:30px;">© 2015 – 2019, HiCTO, 沪ICP备19012594号</div>
+          <div class="text" style="margin-top:30px;">
+           © 2015 – 2021, HiCTO,  <a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备19012594号-1</a></div>
         </div>
       </div>
       <div style="text-align:right">
